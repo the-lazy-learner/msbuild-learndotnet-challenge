@@ -11,8 +11,10 @@ IEnumerable<string> FindFiles(string folderName)
 
     foreach (var file in foundFiles)
     {
+        var extension = Path.GetExtension(file);
+
         // The file name will contain full path so only check the end
-        if (file.EndsWith("sales.json"))
+        if (extension == ".json")
         {
             salesFiles.Add(file);
         }
