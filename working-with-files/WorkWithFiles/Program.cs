@@ -1,4 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
+var currentDirectory = Directory.GetCurrentDirectory();
+
+var storesDirectory = Path.Combine(currentDirectory, "stores");
+
 IEnumerable<string> FindFiles(string folderName)
 {
     List<string> salesFiles = new List<string>();
@@ -17,7 +21,7 @@ IEnumerable<string> FindFiles(string folderName)
     return salesFiles;
 }
 
-var salesFiles = FindFiles("stores");
+var salesFiles = FindFiles(storesDirectory);
 
 foreach (var file in salesFiles)
 {
