@@ -24,8 +24,3 @@ IEnumerable<string> FindFiles(string folderName)
 }
 
 var salesFiles = FindFiles(storesDirectory);
-
-foreach (var file in salesFiles)
-{
-    Console.WriteLine(file);
-}
