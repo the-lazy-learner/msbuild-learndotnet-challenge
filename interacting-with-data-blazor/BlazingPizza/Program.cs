@@ -11,6 +11,8 @@ builder.Services.AddSingleton<WeatherForecastService>();
 
 // Register the Pizza service.
 // builder.Services.AddSingleton<PizzaService>();
+builder.Services.AddHttpClient();
+builder.Services.AddSqlite<PizzaStoreContext>("Data Source=pizza.db");
 
 
 var app = builder.Build();
@@ -31,6 +33,7 @@ app.UseRouting();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
+app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
 // Initialize the database.
 var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
