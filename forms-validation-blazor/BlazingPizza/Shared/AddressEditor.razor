@@ -1,55 +1,45 @@
 <div class="form-field">
-    <label for="customername">Name:</label>
-    <div>
-        <input type="text" id="customername" @bind="Address.Name" @ref="startName">
-    </div>
+  <label for="customername">Name:</label>
+  <div>
+    <InputText id="customername" @bind-Value="Address.Name" />
+  </div>
 </div>
 
 <div class="form-field">
-    <label for="addressline1">Line 1:</label>
-    <div>
-        <input type="text" id="addressline1" @bind="Address.Line1">
-    </div>
+  <label for="addressline1">Line 1:</label>
+  <div>
+    <InputText id="addressline1" @bind-Value="Address.Line1" />
+  </div>
 </div>
 
 <div class="form-field">
-    <label for="addressline2">Line 2:</label>
-    <div>
-        <input type="text" id="addressline2" @bind="Address.Line2">
-    </div>
+  <label for="addressline2">Line 2:</label>
+  <div>
+    <InputText id="addressline2" @bind-Value="Address.Line2" />
+  </div>
 </div>
 
 <div class="form-field">
-    <label for="city">City:</label>
-    <div>
-        <input type="text" id="city" @bind="Address.City">
-    </div>
+  <label for="city">City:</label>
+  <div>
+    <InputText id="city" @bind-Value="Address.City" />
+  </div>
 </div>
 
 <div class="form-field">
-    <label for="region">Region:</label>
-    <div>
-        <input type="text" id="region" @bind="Address.Region">
-    </div>
+  <label for="region">Region:</label>
+  <div>
+    <InputText id="region" @bind-Value="Address.Region" />
+  </div>
 </div>
 
 <div class="form-field">
-    <label for="postalcode">Postal Code:</label>
-    <div>
-        <input type="text" id="postalcode" @bind="Address.PostalCode">
-    </div>
+  <label for="postalcode">Postal Code:</label>
+  <div>
+    <InputText id="postalcode" @bind-Value="Address.PostalCode" />
+  </div>
 </div>
 
 @code {
     [Parameter] public Address Address { get; set; }
-
-    private ElementReference startName;
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await startName.FocusAsync();
-        }
-    }
-}
+} 
