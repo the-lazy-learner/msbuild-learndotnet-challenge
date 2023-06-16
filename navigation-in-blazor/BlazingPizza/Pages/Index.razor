@@ -1,27 +1,10 @@
 ﻿@page "/"
+@layout MainLayout
 @inject HttpClient HttpClient
 @inject NavigationManager NavigationManager
 @inject OrderState OrderState
 
-<div class="top-bar">
-    <a href="" class="logo">
-        <img src="img/logo.svg" alt="Blazing Pizzas Logo">
-    </a>
-
-    <NavLink href="" class="nav-tab active" Match="NavLinkMatch.All">
-        <img src="img/pizza-slice.svg" alt="Blazing Pizzas">
-        <div>Get Pizza</div>
-    </NavLink>
-
-    <NavLink href="myorders" class="nav-tab">
-        <img src="img/bike.svg" alt="My Orders">
-        <div>My Orders</div>
-    </NavLink>
-</div>
-
 <div class="main">
-    <h1>Blazing Pizzas!</h1>
-
     <ul class="pizza-cards">
         @if (specials != null)
         {
