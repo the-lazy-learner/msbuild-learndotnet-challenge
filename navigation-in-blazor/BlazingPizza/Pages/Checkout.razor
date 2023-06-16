@@ -8,7 +8,7 @@
         <img src="img/logo.svg" alt="Blazing Pizzas Logo">
     </a>
 
-    <NavLink href="" class="nav-tab">
+    <NavLink href="" class="nav-tab" Match="NavLinkMatch.All">
         <img src="img/pizza-slice.svg" alt="Blazing Pizzas">
         <div>Get Pizza</div>
     </NavLink>
@@ -58,6 +58,6 @@
         var response = await HttpClient.PostAsJsonAsync(NavigationManager.BaseUri + "orders", OrderState.Order);
         var newOrderId = await response.Content.ReadFromJsonAsync<int>();
         OrderState.ResetOrder();
-        NavigationManager.NavigateTo("/myorders");
+        NavigationManager.NavigateTo($"myorders/{newOrderId}");
     }
 }
