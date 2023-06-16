@@ -2,22 +2,6 @@
 @inject HttpClient HttpClient
 @inject NavigationManager NavigationManager
 
-<div class="top-bar">
-    <a href="" class="logo">
-        <img src="img/logo.svg" alt="Blazing Pizzas Logo">
-    </a>
-
-    <NavLink href="" class="nav-tab" Match="NavLinkMatch.All">
-        <img src="img/pizza-slice.svg" alt="Get Pizza">
-        <div>Get Pizza</div>
-    </NavLink>
-
-    <NavLink href="" class="nav-tab active">
-        <img src="img/bike.svg" alt="My Orders">
-        <div>My Orders</div>
-    </NavLink>
-</div>
-
 <div class="main">
     @if (ordersWithStatus is null)
     {
