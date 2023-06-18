@@ -4,24 +4,26 @@
   <PageTitle>Blazing Pizza</PageTitle>
 </head>
 
-<div class="app">
-  <header>
-    <a href="" class="logo">
-      <img src="img/logo.svg" alt="Blazing Pizza Logo">
-    </a>
+<header>
+  <nav class="top-bar">
+  <a href="" class="logo">
+    <img src="img/logo.svg" alt="Blazing Pizza Logo">
+  </a>
 
-    <NavLink href="" class="nav-tab" Match="NavLinkMatch.All">
-      <img src="img/pizza-slice.svg" alt="Get Pizza">
-      <div>Get Pizza</div>
-    </NavLink>
+  <NavLink href="" class="nav-tab" Match="NavLinkMatch.All">
+    <img src="img/pizza-slice.svg" alt="Get Pizza">
+    <div>Get Pizza</div>
+  </NavLink>
 
-    <NavLink href="myorders" class="nav-tab">
-      <img src="img/bike.svg" alt="My Orders">
-      <div>My Orders</div>
-    </NavLink>
-  </header>
-  <main>
-    <article class="content">@Body</article>
-  </main>
-</div>
+  <NavLink href="myorders" class="nav-tab">
+    <img src="img/bike.svg" alt="My Orders">
+    <div>My Orders</div>
+  </NavLink>
+  </nav>
+</header>
+<main>
+  <article class="content">@Body</article>
+</main>
+
+  <footer>&copy; Blazzing Pizza, @DateTime.Now.Year</footer>
 

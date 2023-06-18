@@ -17,11 +17,11 @@
         </form>
 
         <div class="dialog-buttons">
-            <button class="btn btn-secondary mr-auto" @onclick="OnCancel">Cancel</button>
-            <span class="mr-center">
+            <button type="reset" class="btn btn-secondary me-auto" @onclick="OnCancel">Cancel</button>
+            <span class="me-center">
                 Price: <span class="price">@(Pizza.GetFormattedTotalPrice())</span>
             </span>
-            <button class="btn btn-success ml-auto" @onclick="OnConfirm">Order ></button>
+            <button type="button" class="btn btn-success ms-auto" @onclick="OnConfirm">Order ></button>
         </div>
     </div>
 </div>
