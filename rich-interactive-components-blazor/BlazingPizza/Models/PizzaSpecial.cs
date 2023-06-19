@@ -10,5 +10,6 @@ public class PizzaSpecial
     public decimal BasePrice { get; set; }
     public string Description { get; set; } = default!;
     public string ImageUrl { get; set; } = default!;
+    public int? FixedSize { get; set; }
     public string GetFormattedBasePrice() => BasePrice.ToString("0.00");
 }
