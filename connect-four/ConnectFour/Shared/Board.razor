@@ -3,9 +3,9 @@
 <HeadContent>
   <style>
     :root {
-      --board-bg: yellow;
-      --player1: blue;
-      --player2: red;
+      --board-bg: @System.Drawing.ColorTranslator.ToHtml(BoardColor);
+      --player1: @System.Drawing.ColorTranslator.ToHtml(Player1Color);
+      --player2: @System.Drawing.ColorTranslator.ToHtml(Player2Color);
     }
   </style>
 </HeadContent>
@@ -52,6 +52,14 @@
 
   private string ResetStyle => (WinnerMessage == string.Empty) ? "display: none;" : string.Empty;
 
+  [Parameter]
+  public System.Drawing.Color BoardColor { get; set; } = System.Drawing.ColorTranslator.FromHtml("yellow");
+
+  [Parameter]
+  public System.Drawing.Color Player1Color { get; set; } = System.Drawing.ColorTranslator.FromHtml("blue");
+
+  [Parameter]
+  public System.Drawing.Color Player2Color { get; set; } = System.Drawing.ColorTranslator.FromHtml("red");
   protected override void OnInitialized() => State.ResetBoard();
 
   private void PlayPiece(byte col)
