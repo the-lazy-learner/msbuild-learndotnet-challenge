@@ -2,6 +2,10 @@ namespace ConnectFour.Shared;
 
 public class GameState
 {
+    public static readonly int NUM_CELLS = 42;
+
+    public static readonly byte NUM_COLS = 7;
+
     static GameState()
     {
         CalculateWinningPlaces();
@@ -33,10 +37,10 @@ public class GameState
     public static void CalculateWinningPlaces()
     {
         // Horizontal rows
-        for (byte row = 0; row < 6; row++)
+        for (byte row = 0; row < NUM_COLS - 1; row++)
         {
-            byte rowCol1 = (byte)(row * 7);
-            byte rowColEnd = (byte)((row + 1) * 7 - 1);
+            byte rowCol1 = (byte)(row * NUM_COLS);
+            byte rowColEnd = (byte)((row + 1) * NUM_COLS - 1);
             byte checkCol = rowCol1;
             while (checkCol <= rowColEnd - 3)
             {
@@ -52,7 +56,7 @@ public class GameState
         }
 
         // Vertical columns
-        for (int col = 0; col < 7; col++)
+        for (byte col = 0; col < NUM_COLS; col++)
         {
             byte colRow1 = col;
             byte colRowEnd = (byte)(col + 35);
@@ -66,12 +70,12 @@ public class GameState
                     (byte)(checkRow + 14),
                     (byte)(checkRow + 21)
                 });
-                checkRow += 7;
+                checkRow += NUM_COLS;
             }
         }
 
         // forward slash diagonal "/"
-        for (int col = 0; col < 4; col++)
+        for (byte col = 0; col < 4; col++)
         {
             // starting column must be 0-3
             byte colRow1 = (byte)(col + 21);
@@ -86,7 +90,7 @@ public class GameState
                     (byte)(checkPos - 12),
                     (byte)(checkPos - 18),
                 });
-                checkPos += 7;
+                checkPos += NUM_COLS;
             }
         }
 
@@ -106,7 +110,7 @@ public class GameState
                     (byte)(checkPos + 16),
                     (byte)(checkPos + 24),
                 });
-                checkPos += 7;
+                checkPos += NUM_COLS;
             }
         }
     }
@@ -118,7 +122,7 @@ public class GameState
     public WinState CheckForWin()
     {
         // Exit immediately if less than 7 pieces are played
-        if (TheBoard.Count(x => x != 0) < 7) return WinState.No_Winner;
+        if (TheBoard.Count(x => x != 0) < NUM_COLS) return WinState.No_Winner;
 
         foreach (var scenario in WinningPlaces)
         {
@@ -132,7 +136,7 @@ public class GameState
                     TheBoard[scenario[3]]) return (WinState)TheBoard[scenario[0]];
         }
 
-        if (TheBoard.Count(x => x != 0) == 42) return WinState.Tie;
+        if (TheBoard.Count(x => x != 0) == NUM_CELLS) return WinState.Tie;
 
         return WinState.No_Winner;
     }
@@ -151,9 +155,9 @@ public class GameState
 
         // Drop the piece in
         var landingSpot = column;
-        for (var i = column; i < 42; i += 7)
+        for (var i = column; i < NUM_CELLS; i += NUM_COLS)
         {
-            if (TheBoard[landingSpot + 7] != 0) break;
+            if (TheBoard[landingSpot + NUM_COLS] != 0) break;
             landingSpot = i;
         }
 
@@ -162,15 +166,15 @@ public class GameState
         return ConvertLandingSpotToRow(landingSpot);
     }
 
-    public List<int> TheBoard { get; private set; } = new List<int>(new int[42]);
+    public List<int> TheBoard { get; private set; } = new List<int>(new int[NUM_CELLS]);
 
     public void ResetBoard()
     {
-        TheBoard = new List<int>(new int[42]);
+        TheBoard = new List<int>(new int[NUM_CELLS]);
     }
 
     private static byte ConvertLandingSpotToRow(int landingSpot)
     {
-        return (byte)(Math.Floor(landingSpot / (decimal)7) + 1);
+        return (byte)(Math.Floor(landingSpot / (decimal)NUM_COLS) + 1);
     }
 }
